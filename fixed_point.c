@@ -8,37 +8,27 @@
 
 float g1(float x)
 {
-    float p;
-    p = x - powf(x, 3) - 4*powf(x, 2) + 10;
-    return p;
+    return x - powf(x, 3) - 4*powf(x, 2) + 10;
 }
 
 float g2(float x)
 {
-    double p;
-    p = sqrtf(10/x - 4*x);
-    return p;
+    return sqrtf(10/x - 4*x);
 }
 
 float g3(float x)
 {
-    double p;
-    p = sqrtf(10 - powf(x, 3))/2;
-    return p;
+    return sqrtf(10 - powf(x, 3))/2;
 }
 
 float g4(float x)
 {
-    double p;
-    p = sqrtf(10 / (4 + x));
-    return p;
+    return sqrtf(10 / (4 + x));
 }
 
 float g5(float x)
 {
-    float p;
-    p = x - (powf(x, 3) + 4*powf(x, 2) - 10)/(3*powf(x, 2) + 8*x);
-    return p;
+    return x - (powf(x, 3) + 4*powf(x, 2) - 10)/(3*powf(x, 2) + 8*x);
 }
 int main()
 {
