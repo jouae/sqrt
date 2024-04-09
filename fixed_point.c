@@ -30,12 +30,24 @@ float g5(float x)
 {
     return x - (powf(x, 3) + 4*powf(x, 2) - 10)/(3*powf(x, 2) + 8*x);
 }
+
+void print_errors(float *e, size_t num)
+{
+    printf("relative errors:\n\n");
+    for(int i=0; i < num; i++)
+    {
+        printf("%2d-iter: %f\n",i+1 , e[i]);
+    }
+}
 int main()
 {
     float tol = 1e-4;
     float p_pre = 1.5;
     float p_cur = 1e5;
+    float exact = 1.365230013;
     float diff = fabsf(p_pre - p_cur);
+    /* relative errors */
+    float e[MAX_COUNT];
     int i = 0;
     
     printf("p0: %f\n", p_pre);
@@ -46,8 +58,11 @@ int main()
         printf("%d iteration:\n", i+1);
         printf("    p_cur: %f\n\n", p_cur);
         p_pre = p_cur;
+        e[i] = fabsf(p_cur - exact) / exact;
         i++;
     }
+    
+    print_errors(e, i);
 
     return 0;
 }
