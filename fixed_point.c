@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define MAX_COUNT 10
+#define MAX_COUNT 30
 
 /* solve f(x) = x^3 + 4x^2 - 10 */
 
@@ -36,19 +36,17 @@ int main()
     float p_pre = 1.5;
     float p_cur = 1e5;
     float diff = fabsf(p_pre - p_cur);
+    int i = 0;
     
-    printf("initial: %f\n", p_pre);
-    for(int i=0; i < MAX_COUNT; i++)
+    printf("p0: %f\n", p_pre);
+    while(i < MAX_COUNT && diff > tol && !isnan(p_cur))
     {
-        if(diff < tol || isnan(p_cur))
-            break;
-
-        p_cur = g2(p_pre);
+        p_cur = g3(p_pre);
         diff = fabsf(p_pre - p_cur);
         printf("%d iteration:\n", i+1);
-        printf("    p_pre: %f\n", p_pre);
-        printf("    p_cur: %f\n", p_cur);
+        printf("    p_cur: %f\n\n", p_cur);
         p_pre = p_cur;
+        i++;
     }
 
     return 0;
