@@ -42,7 +42,7 @@ void print_errors(float *e, size_t num)
 
 float compute_order(float *e, size_t num)
 {
-    return logf(fabsf(e[i-1]/e[i-2])) / logf(fabsf(e[i-2]/e[i-3]));
+    return logf(fabsf(e[num-1]/e[num-2])) / logf(fabsf(e[num-2]/e[num-3]));
 }
 
 /** 
@@ -55,9 +55,9 @@ float compute_order(float *e, size_t num)
  */
 void print_aec(float *e, size_t num)
 {
-    for(int j=1; j < num; j++)
+    for(int j=0; j < num-1; j++)
     {
-        printf("aec: %f\n", e[num+1]/e[num]);
+        printf("aec: %f\n", e[j+1]/e[j]);
     }
 }
 
