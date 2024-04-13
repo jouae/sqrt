@@ -36,9 +36,15 @@ void print_errors(float *e, size_t num)
     printf("relative errors:\n\n");
     for(int i=0; i < num; i++)
     {
-        printf("%2d-iter: %f\n",i+1 , e[i]);
+        printf("%2d-iter: %e\n",i+1 , e[i]);
     }
 }
+
+float compute_order(float *e, size_t num)
+{
+    return logf(fabsf(e[i-1]/e[i-2])) / logf(fabsf(e[i-2]/e[i-3]));
+}
+
 int main()
 {
     float tol = 1e-4;
@@ -53,7 +59,7 @@ int main()
     printf("p0: %f\n", p_pre);
     while(i < MAX_COUNT && diff > tol && !isnan(p_cur))
     {
-        p_cur = g3(p_pre);
+        p_cur = g5(p_pre);
         diff = fabsf(p_pre - p_cur);
         printf("%d iteration:\n", i+1);
         printf("    p_cur: %f\n\n", p_cur);
