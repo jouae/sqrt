@@ -45,6 +45,22 @@ float compute_order(float *e, size_t num)
     return logf(fabsf(e[i-1]/e[i-2])) / logf(fabsf(e[i-2]/e[i-3]));
 }
 
+/** 
+ * print_aec - print the asymptotic error constant
+ * @e: 1D array, stored errors
+ * @num: size of e
+ *
+ * This method is for linearly convergence e.g.
+ * fixed-point method.
+ */
+void print_aec(float *e, size_t num)
+{
+    for(int j=1; j < num; j++)
+    {
+        printf("aec: %f\n", e[num+1]/e[num]);
+    }
+}
+
 int main()
 {
     float tol = 1e-4;
@@ -69,6 +85,7 @@ int main()
     }
     
     print_errors(e, i);
+    print_aec(e, i);
 
     return 0;
 }
